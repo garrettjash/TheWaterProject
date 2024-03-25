@@ -14,14 +14,17 @@
         <span class="navbar-band m-lg-2">THE WATER PROJECT</span>
     </div>
     <div class="row m-1 p-1">
-        <div class="col-3">Add filtering here later</div>
+        <div class="col-3">
+            <vc:project-types  />
+        </div>
+        <div class="container col-9">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
-    <div class="container col-9">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -15,7 +15,7 @@ namespace TheWaterProject.Controllers
             _repo = temp;
         }
 
-        public IActionResult Index(int pageNum)
+        public IActionResult Index(int pageNum, string projectType)
         {
 
             int pageSize = 2;
@@ -25,6 +25,7 @@ namespace TheWaterProject.Controllers
 
 
                 Projects = _repo.Projects
+                .Where(x => projectType == x.ProjectType || projectType == null)
                 .OrderBy(x => x.ProjectName)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
@@ -33,8 +34,11 @@ namespace TheWaterProject.Controllers
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = pageSize,
-                    TotalItems = _repo.Projects.Count()
-                }
+                    // if project type is null, get a count of all projects, if filtering then only get the count of the filtered projects
+                    TotalItems = projectType == null ? _repo.Projects.Count() : _repo.Projects.Where(x => x.ProjectType == projectType).Count()
+                },
+
+                CurrentProjectType = projectType
             };  
 
 /*            var projectData = _repo.Projects
