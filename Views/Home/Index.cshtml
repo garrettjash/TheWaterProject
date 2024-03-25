@@ -5,22 +5,13 @@
 
 <h1>Water Project</h1>
 
-<ul>
     @foreach (Project p in Model.Projects)
     {
-        <h3>@p.ProjectName</h3>
-
-        <ul>
-            <li>Project Type: @p.ProjectType</li>
-            <li>Regional Program: @p.ProgramName</li>
-            <li>Imoact: @p.ProjectImpact served</li>
-            <li>Installation: @p.ProjectInstallation</li>
-            <li>Phase: @p.ProjectPhase</li>
-        </ul>
+        <partial name="ProjectSummary" model="p" />
     }
-</ul>
 
-<div page-model="@Model.PaginationInfo" page-action="Index">
+<div page-model="@Model.PaginationInfo" page-action="Index" page-classes-enabled="true" page-class="btn" 
+    page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-grp pull-right m-1">
 
 </div>
 
