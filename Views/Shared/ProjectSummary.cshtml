@@ -1,7 +1,9 @@
-﻿
+﻿@using TheWaterProject.Infrastructure
 @{
     ViewData["Title"] = "ProjectSummary";
 }
+
+@model Project
 
 <div class="card m-1 p-1">
     <h4>
@@ -15,5 +17,12 @@
         <li>Installation: @Model.ProjectInstallation</li>
         <li>Phase: @Model.ProjectPhase</li>
     </ul>
+
+    <form id=@Model.ProjectId method="post" asp-page="/Cart">
+        <input type="hidden" asp-for="ProjectId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <button type="submit" class="btn-outline-success btn-sm float-end">Donate</button>
+    </form>
+    
 </div>
 

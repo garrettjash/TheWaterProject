@@ -2,7 +2,7 @@
 {
     public class ProjectsListViewModel
     {
-        public IQueryable<Project> Projects { get; set; }
+        public IQueryable<Project> Projects1 { get; set; }
 
         public PaginationInfo PaginationInfo { get; set; } = new PaginationInfo();
 

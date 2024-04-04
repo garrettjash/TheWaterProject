@@ -18,13 +18,13 @@ namespace TheWaterProject.Controllers
         public IActionResult Index(int pageNum, string projectType)
         {
 
-            int pageSize = 2;
+            int pageSize = 5;
 
             var blah = new ProjectsListViewModel
             {
 
 
-                Projects = _repo.Projects
+                Projects1 = _repo.Projects
                 .Where(x => projectType == x.ProjectType || projectType == null)
                 .OrderBy(x => x.ProjectName)
                 .Skip((pageNum - 1) * pageSize)
